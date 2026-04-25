@@ -1,0 +1,373 @@
+/* ================= RESET & BASICS ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #070d1a;
+    color: #e2e8f0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-family: monospace;
+    color: #38bdf8;
+}
+
+/* ================= BACKGROUND ================= */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.glow-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: #38bdf8;
+    top: -100px;
+    right: -100px;
+}
+
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    background: #8b5cf6;
+    bottom: -100px;
+    left: -100px;
+}
+
+/* ================= LAYOUT ================= */
+.container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.header-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.back-link {
+    display: inline-block;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    transition: 0.3s ease;
+}
+
+.back-link:hover {
+    color: #38bdf8;
+}
+
+.header-section h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: #94a3b8;
+    font-size: 1rem;
+}
+
+/* ================= GLASS PANEL ================= */
+.glass-panel {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6), 0 0 40px rgba(56, 189, 248, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.03), transparent);
+    transform: skewX(-25deg);
+    animation: shine 8s infinite;
+    pointer-events: none;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 200%; }
+    100% { left: 200%; }
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* ================= INPUTS ================= */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #e2e8f0;
+}
+
+.helper-text {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-top: -5px;
+    margin-bottom: 5px;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.input-container:focus-within {
+    border-color: #38bdf8;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2), inset 0 2px 4px rgba(0,0,0,0.2);
+    transform: translateY(-1px);
+}
+
+.textarea-container {
+    align-items: flex-start;
+    padding-top: 12px;
+}
+
+.icon {
+    position: absolute;
+    left: 15px;
+    font-size: 1.1rem;
+}
+
+input, select, textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    font-family: monospace; /* Code font for APIs */
+    outline: none;
+    padding: 14px 15px 14px 45px;
+}
+
+textarea {
+    padding-left: 15px;
+    resize: vertical;
+}
+
+/* Fix option styling for select */
+select option {
+    background: #0f172a;
+    color: #fff;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #475569;
+}
+
+/* ================= BUTTON ================= */
+.submit-btn {
+    position: relative;
+    background: linear-gradient(135deg, #0ea5e9, #6366f1);
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 14px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    margin-top: 15px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px -10px rgba(14, 165, 233, 0.6);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.5s transform;
+}
+
+.submit-btn:hover .btn-glow {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* ================= LOADING STYLES ================= */
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(-45deg, rgba(7, 13, 26, 0.7), rgba(15, 23, 42, 0.75), rgba(2, 6, 23, 0.7), rgba(30, 20, 45, 0.75));
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.loader-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(56, 189, 248, 0.1);
+    border-top-color: #38bdf8;
+    border-right-color: #8b5cf6;
+    border-radius: 50%;
+    animation: spin 1s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    margin-bottom: 25px;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+#loadingOverlay h2 {
+    font-family: 'Outfit';
+    color: #fff;
+    margin-bottom: 12px;
+    font-size: 3rem; /* Bigger title */
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #ffffff, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#loadingOverlay p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 480px) {
+    .glass-panel {
+        padding: 25px;
+    }
+}
+
+/* ================= STREAMING STATS ================= */
+.progress-stats {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.stat-box {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.08));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 20px 30px;
+    min-width: 160px;
+    text-align: center;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px -10px rgba(56, 189, 248, 0.3);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #38bdf8;
+    font-family: 'Outfit', sans-serif;
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+#latestScore {
+    color: #8b5cf6;
+    text-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+}

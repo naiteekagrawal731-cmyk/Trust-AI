@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automate Testing | Trust AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="automate.css">
+</head>
+
+<body>
+
+    <!-- Animated Background Canvas -->
+    <canvas id="particles"></canvas>
+
+    <!-- Ambient Glowing Orbs -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <div class="container" id="main-content">
+
+        <div class="header-section">
+            <a href="getques.html" class="back-link">← Back</a>
+            <h1>API Integration</h1>
+            <p class="subtitle">Provide your model's API details to run evaluation automatically.</p>
+        </div>
+
+        <div class="card glass-panel">
+
+            <div class="form-wrapper">
+
+                <div class="input-group">
+                    <label for="apiUrl">API URL</label>
+                    <div class="input-container">
+                        <span class="icon">🔗</span>
+                        <input type="text" id="apiUrl"
+                            placeholder="e.g. https://api.groq.com/openai/v1/chat/completions">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="method">HTTP Method</label>
+                    <div class="input-container">
+                        <span class="icon">⚙️</span>
+                        <select id="method">
+                            <option value="POST">POST</option>
+                            <option value="GET">GET</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="headers">Headers (JSON format)</label>
+                    <p class="helper-text">Map keys like "Content-Type", "Authorization" etc.</p>
+                    <div class="input-container textarea-container">
+                        <textarea id="headers"
+                            placeholder='{&#10;  "Content-Type": "application/json",&#10;  "Authorization": "Bearer YOUR_API_KEY"&#10;}'
+                            rows="4"></textarea>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="requestTemplate">Request Body Template</label>
+                    <p class="helper-text">Valid JSON format. Use <code>{{question}}</code> where the prompt should be
+                        injected.</p>
+                    <div class="input-container textarea-container">
+                        <textarea id="requestTemplate"
+                            placeholder='{&#10;  "model": "llama-3",&#10;  "messages": [&#10;    { "role": "user", "content": "{{question}}" }&#10;  ]&#10;}'
+                            rows="6"></textarea>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="responsePath">Response Content Path</label>
+                    <p class="helper-text">Dot notation path to extract the final answer from JSON response.</p>
+                    <div class="input-container">
+                        <span class="icon">📍</span>
+                        <input type="text" id="responsePath" placeholder="e.g. choices[0].message.content">
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="startAutomation()" id="startBtn">
+                    <span>Start Auto Evaluation</span>
+                    <span class="btn-glow"></span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" style="display: none;">
+        <!-- Top Right Expected Time -->
+        <div id="expectedTimeContainer" class="stat-box" style="position: absolute; top: 40px; right: 40px; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(16px); border: 1px solid rgba(56,189,248,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5); padding: 20px 30px; min-width: 220px; z-index: 1000;">
+            <span class="stat-label" style="font-size: 1rem; color: #cbd5e1; font-weight: 600; letter-spacing: 1.5px;">EXPECTED TIME</span>
+            <span class="stat-value" id="expectedTime" style="font-size: 2.5rem; color: #38bdf8; text-shadow: 0 0 15px rgba(56,189,248,0.5); font-weight: 800;">--</span>
+        </div>
+
+        <div class="loader-spinner"></div>
+        <h2 id="loadingText">Initializing model...</h2>
+        <p id="loadingSubtext">Please wait while your model evaluation is queued and submitted.</p>
+
+        <!-- Real-time Stats Container -->
+        <div id="progressStats" class="progress-stats" style="display: none;">
+            <div class="stat-box">
+                <span class="stat-label">Answers Evaluated</span>
+                <span class="stat-value" id="answerCount">0</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">Latest Score</span>
+                <span class="stat-value" id="latestScore">--</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="automate.js"></script>
+
+<script src="universal-translate.js"></script>
+</body>
+
+</html>

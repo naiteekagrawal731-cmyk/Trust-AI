@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluate - Trust AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="questions.css">
+</head>
+
+<body>
+
+    <!-- Ambient Glowing Orbs -->
+    <div class="glow-bg"></div>
+
+    <div class="header-minimal">
+        <div class="header-left">
+            <a href="#" class="nav-back-button" onclick="event.preventDefault(); clearData(); window.location.href='getques.html'">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back
+            </a>
+            <div class="logo">
+                <span class="logo-icon">✨</span> Trust AI
+            </div>
+        </div>
+        <div class="status-indicator">
+            <span class="pulse"></span> Evaluation in progress
+        </div>
+    </div>
+
+    <div class="container" id="app">
+        <!-- JS Injects HTML Here. Loading state preview below... -->
+        <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Initializing testing environment...</p>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+
+<script src="universal-translate.js"></script>
+</body>
+
+</html>

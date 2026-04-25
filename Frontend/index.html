@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust AI | Bias Detection & Model Comparison</title>
+
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+    <div class="loader-spinner"></div>
+</div>
+
+<!-- Interactive Particles Background -->
+<canvas id="particles"></canvas>
+
+<!-- Ambient glowing orbs -->
+<div class="glow-orb orb-primary"></div>
+<div class="glow-orb orb-secondary"></div>
+
+<!-- Modern Navbar -->
+<nav class="navbar">
+    <div class="logo">
+        <span class="logo-icon">✨</span>
+        <span class="logo-text">Trust AI</span>
+    </div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#news">Why Evaluate?</a>
+        <a href="#features">Features</a>
+        <a href="#how">How it Works</a>
+        <a href="guide.html">How to Use</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="title"><span id="typing"></span><span class="cursor">|</span></h1>
+        <p class="tagline">Uncover biases in generative models. Ensure your AI behaves fairly, ethically, and responsibly across all demographics.</p>
+        <a href="getques.html" class="btn primary-btn">
+            Start Testing Models
+            <span class="btn-glow"></span>
+        </a>
+    </div>
+    <div class="hero-visual">
+        <div class="abstract-shape"></div>
+    </div>
+</section>
+
+<!-- News / Context Section -->
+<section id="news" class="section reveal">
+    <div class="section-header">
+        <h2 class="section-title">The Challenge of Fast AI</h2>
+        <p class="section-subtitle">Why checking for bias is more critical than ever.</p>
+    </div>
+    <div class="news-container glass-panel">
+        <div class="news-icon text-glow">⚠️</div>
+        <div class="news-content">
+            <h3>Speed vs. Fairness</h3>
+            <p>Modern Artificial Intelligence models operate at staggering speeds, making continuous, autonomous decisions every second. However, this hyper-efficiency comes at a hidden cost: <strong>systemic algorithmic bias</strong>.</p>
+            <p style="margin-top: 15px;">Because AI learns from vast historical data, its rapid generation often inadvertently amplifies human prejudices. If left unchecked, these fast decisions can actively harm minority and marginalized groups. We must systematically evaluate AI to ensure its outcomes are fair, ethical, and unbiased.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="section reveal">
+    <div class="section-header">
+        <h2 class="section-title">Why Trust AI?</h2>
+        <p class="section-subtitle">A comprehensive suite to evaluate model robustness and fairness.</p>
+    </div>
+    <div class="features-grid">
+        
+        <div class="card glass-panel">
+            <div class="card-icon">🎭</div>
+            <h3>Bias Detection</h3>
+            <p>Analyze AI responses to detect hidden bias across gender, age, and more.</p>
+        </div>
+
+        <div class="card glass-panel">
+            <div class="card-icon">⚙️</div>
+            <h3>Automate AI Bias Check</h3>
+            <p>Automate the process of checking biasness of AI once it is deployed.</p>
+        </div>
+
+        <div class="card glass-panel">
+            <div class="card-icon">📂</div>
+            <h3>Category Testing</h3>
+            <p>Test fairness across multiple domains like hiring and leadership.</p>
+        </div>
+
+        <div class="card glass-panel">
+            <div class="card-icon">📊</div>
+            <h3>Detailed Reports</h3>
+            <p>Get full score results instantly, including biasness, consistency, fairness, Delta Avg, and Max metrics.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section id="how" class="section reveal">
+    <div class="section-header">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Four easy steps to a fairer model.</p>
+    </div>
+    <div class="process-steps">
+        <div class="step">
+            <div class="step-number">01</div>
+            <div>
+                <h4>Select</h4>
+                <p>Choose the model and categories you want to test against.</p>
+            </div>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step">
+            <div class="step-number">02</div>
+            <div>
+                <h4>Generate</h4>
+                <p>The system generates distinct prompts mapping to your categories.</p>
+            </div>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step">
+            <div class="step-number">03</div>
+            <div>
+                <h4>Compare</h4>
+                <p>Input the model's responses into the Trust AI evaluation engine.</p>
+            </div>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step">
+            <div class="step-number">04</div>
+            <div>
+                <h4>Detect</h4>
+                <p>Get a comprehensive analytics report detailing bias across metrics.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="section reveal">
+    <div class="section-header">
+        <h2 class="section-title">Commonly Asked Questions</h2>
+        <p class="section-subtitle">Everything you need to know about Trust AI.</p>
+    </div>
+    <div class="faq-container">
+        
+        <div class="faq-item glass-panel">
+            <div class="faq-question">
+                <h3>What is Trust AI?</h3>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Trust AI is a comprehensive platform designed to evaluate generative AI models for hidden biases. We help you ensure that your AI produces fair and ethical outcomes across different demographics.</p>
+            </div>
+        </div>
+
+        <div class="faq-item glass-panel">
+            <div class="faq-question">
+                <h3>How does the evaluation process work?</h3>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>We generate specific prompts based on the categories you want to test (like gender, age, etc.). We then feed these to the AI model and use our analytics dashboard to measure biases in its responses.</p>
+            </div>
+        </div>
+
+
+
+        <div class="faq-item glass-panel">
+            <div class="faq-question">
+                <h3>Which AI models can be tested?</h3>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Trust AI can evaluate almost any generative model, provided you can proxy the API into our automated tester or enter the generated responses manually into our system.</p>
+            </div>
+        </div>
+
+        <div class="faq-item glass-panel">
+            <div class="faq-question">
+                <h3>What do the metrics in the result report mean?</h3>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>
+                    <strong>Biasness:</strong> Calculates the model's inclination toward or against specific demographic groups.<br>
+                    <strong>Consistency:</strong> Measures how uniformly the AI behaves when presented with similar prompts.<br>
+                    <strong>Fairness:</strong> Evaluates if the model treats differing groups equally without discrimination.<br>
+                    <strong>Avg Delta:</strong> Represents the average difference in sentiment or outcomes between groups.<br>
+                    <strong>Max Delta:</strong> Highlights the single largest disparity in responses between any two groups.<br>
+                    <strong>Variance:</strong> Shows the overall spread and unpredictability of the model's behavior across all tests.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item glass-panel">
+            <div class="faq-question">
+                <h3>How do I use the Automated AI Bias Check?</h3>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>The automation feature allows you to continuously evaluate a deployed AI model. Simply connect your model, configure your desired evaluation speed (expected time), and select the target categories. Trust AI will stream tests in the background and update your real-time dashboard so you can monitor your model without manual intervention.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section reveal">
+    <div class="section-header">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-subtitle">Have questions or want to collaborate?</p>
+    </div>
+    <div class="contact-container glass-panel">
+        <div class="card-icon">✉️</div>
+        <h3>Email Us</h3>
+        <p>Drop us a message at:</p>
+        <div class="email-wrapper">
+            <span class="contact-email" id="contactEmail">trustaibuildfortrust@gmail.com</span>
+            <button class="copy-btn" id="copyEmailBtn">📋 Copy</button>
+        </div>
+        <div id="copyToast" class="toast">Copied to clipboard!</div>
+
+        <div class="card-icon" style="margin-top: 40px;">𝕏</div>
+        <h3>Follow Us</h3>
+        <p>Stay updated on X (Twitter):</p>
+        <a href="https://x.com/TrustA32582" target="_blank" style="text-decoration: none;">
+            <div class="email-wrapper" style="margin-top: 15px; transition: all 0.3s ease;">
+                <span class="contact-email">@TrustA32582</span>
+                <button class="copy-btn" style="pointer-events: none;">🔗 Visit</button>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2026 Trust AI. Built for fair AI.</p>
+</footer>
+
+<script src="universal-translate.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analytics Dashboard | Trust AI</title>
+    
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="result.css" />
+    
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+    <!-- Ambient Glow -->
+    <div class="ambient-glow glow-top"></div>
+    <div class="ambient-glow glow-bottom"></div>
+
+    <header class="page-header glass-header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-icon">✨</span>
+                Trust AI
+            </div>
+            
+            <div class="header-actions">
+                <p class="header-sub">Bias Evaluation Dashboard</p>
+                <a href="index.html" class="new-test-btn">New Test</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">Evaluation Results</h1>
+            <p class="dashboard-desc">Detailed metrics across selected categories based on model responses.</p>
+        </div>
+
+        <!-- JS injects the cards here -->
+        <div id="result">
+            <div class="loading-state">
+                <div class="spinner"></div>
+                <p>Analyzing responses and aggregating metrics...</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="result.js"></script>
+<script src="universal-translate.js"></script>
+</body>
+</html>

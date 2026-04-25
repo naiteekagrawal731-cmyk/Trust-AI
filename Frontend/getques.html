@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configure Test | Trust AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="getques.css">
+</head>
+<body>
+
+<!-- Animated Background Canvas -->
+<canvas id="particles"></canvas>
+
+<!-- Ambient Glowing Orbs -->
+<div class="glow-orb orb-1"></div>
+<div class="glow-orb orb-2"></div>
+
+<div class="container">
+    
+    <div class="header-section">
+        <a href="index.html" class="back-link">← Back</a>
+        <h1>New Evaluation</h1>
+        <p class="subtitle">Set up your model and select bias categories for detection.</p>
+    </div>
+
+    <div class="card glass-panel">
+        
+        <div class="form-wrapper">
+            
+            <!-- Model Input -->
+            <div class="input-group">
+                <label for="model">Model Name</label>
+                <div class="input-container">
+                    <span class="icon">🤖</span>
+                    <input type="text" id="model" placeholder="e.g. GPT-4, Llama-3, Claude Opus">
+                </div>
+            </div>
+
+            <!-- Number of Questions -->
+            <div class="input-group">
+                <label for="numQuestions">Number of Questions Per Category</label>
+                <div class="input-container">
+                    <span class="icon">📝</span>
+                    <select id="numQuestions">
+                        <option value="5">5 Questions (Quick Test)</option>
+                        <option value="10">10 Questions (Recommended)</option>
+                        <option value="15">15 Questions (Deep Dive)</option>
+                        <option value="20">20 Questions (Comprehensive)</option>
+                        <option value="50">50 Questions (Recommended For Automation)</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="input-group">
+                <label>Select Bias Categories</label>
+                <p class="helper-text">Choose the domains you want to evaluate for fairness.</p>
+                
+                <div class="simple-box category-grid">
+                    <label class="category-card">
+                        <input type="checkbox" value="gender">
+                        <div class="card-content">
+                            <span class="emoji">👥</span>
+                            <span class="text">Gender Bias</span>
+                        </div>
+                    </label>
+                    <label class="category-card">
+                        <input type="checkbox" value="age">
+                        <div class="card-content">
+                            <span class="emoji">⏳</span>
+                            <span class="text">Age Bias</span>
+                        </div>
+                    </label>
+                    
+                    <!-- DUMMY CATEGORIES (Commented out in logic, but UI shows them) -->
+                    <!-- 
+                    <label class="category-card disabled-card">
+                        <input type="checkbox" value="hiring" disabled>
+                        <div class="card-content">
+                            <span class="emoji">💼</span>
+                            <span class="text">Hiring (Soon)</span>
+                        </div>
+                    </label>
+                    <label class="category-card disabled-card">
+                        <input type="checkbox" value="economic" disabled>
+                        <div class="card-content">
+                            <span class="emoji">💵</span>
+                            <span class="text">Economic (Soon)</span>
+                        </div>
+                    </label>
+                    -->
+                </div>
+                <div id="totalQuestionsDisplay" class="helper-text" style="margin-top: 15px; font-weight: 600; color: #00d2ff; font-size: 0.9rem;">
+                    Total Questions Generated: 0 (0 categories selected)
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons" style="display: flex; gap: 15px; margin-top: 20px;">
+                <button class="submit-btn" onclick="getQuestions()" style="flex: 1;">
+                    <span>Manual Test</span>
+                    <span class="btn-glow"></span>
+                </button>
+                <button class="submit-btn outline" onclick="goToAutomate()" style="flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <span>Automate API</span>
+                    <span class="btn-glow"></span>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="getques.js"></script>
+<script src="universal-translate.js"></script>
+
+</body>
+</html>

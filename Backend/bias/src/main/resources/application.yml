@@ -1,0 +1,25 @@
+spring:
+  mvc:
+    async:
+      request-timeout: ${REQUEST_TIMEOUT:30000000}  # fallback 3000s
+
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:5400/MMDb}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:password}
+
+  jpa:
+    hibernate:
+      ddl-auto: ${DDL_AUTO:update}  # safer for production
+    show-sql: false
+
+server:
+  port: ${PORT:8080}
+
+gemini:
+  api:
+    key: ${gemini.api.key:21312}
+
+groq:
+  api:
+    key: ${groq.api.key:21312}
