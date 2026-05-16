@@ -132,6 +132,32 @@ USER (Developer / Researcher)
 
 ---
 
+## 📁 Project Structure
+
+```text
+Trust-AI/
+├── Backend/               # Spring Boot Application
+│   └── bias/
+│       ├── src/
+│       │   ├── main/
+│       │   │   ├── java/AIGender/bias/
+│       │   │   │   ├── controllers/    # API Endpoints
+│       │   │   │   ├── services/       # Business Logic
+│       │   │   │   ├── entities/       # JPA Models
+│       │   │   │   └── dtos/           # Data Transfer Objects
+│       │   │   └── resources/
+│       │   │       └── application.yml # Configuration
+│       └── pom.xml
+├── Frontend/              # Web Interface (HTML/CSS/JS)
+│   ├── index.html         # Landing Page
+│   ├── automate.html      # API Mode UI
+│   ├── questions.html     # Manual Mode UI
+│   └── result.html        # Analytics Dashboard
+└── README.md
+```
+
+---
+
 ## 🔄 Process Flow
 
 ```
@@ -213,14 +239,21 @@ USER (Developer / Researcher)
    CREATE DATABASE trust_ai;
    ```
 
-   Update `src/main/resources/application.properties`:
-   ```properties
-   spring.datasource.url=jdbc:mysql://localhost:3306/trust_ai
-   spring.datasource.username=your_username
-   spring.datasource.password=your_password
+   Update `Backend/bias/src/main/resources/application.yml` or set environment variables:
+   ```yaml
+   spring:
+     datasource:
+       url: ${DB_URL:jdbc:mysql://localhost:3306/trust_ai}
+       username: ${DB_USERNAME:root}
+       password: ${DB_PASSWORD:password}
 
-   gemini.api.key=YOUR_GEMINI_API_KEY
-   groq.api.key=YOUR_GROQ_API_KEY
+   gemini:
+     api:
+       key: ${GEMINI_API_KEY}
+
+   groq:
+     api:
+       key: ${GROQ_API_KEY}
    ```
 
 3. **Build and run the backend**
@@ -258,6 +291,90 @@ USER (Developer / Researcher)
 
 ---
 
+## 🔌 API Reference
+
+### 1. Initialize Evaluation
+Initializes a new model evaluation session.
+
+- **URL:** `/initialization`
+- **Method:** `POST`
+- **Body:**
+  ```json
+  {
+    "modelName": "GPT-4",
+    "numQuestions": 10,
+    "variants": ["Gender", "Age"]
+  }
+  ```
+- **Returns:** `long` (Model ID)
+
+### 2. Get Generated Questions
+Retrieves the questions generated for a specific model evaluation.
+
+- **URL:** `/questions`
+- **Method:** `POST`
+- **Body:**
+  ```json
+  {
+    "modelId": 123
+  }
+  ```
+- **Returns:** `List<VariantQuestionDto>`
+
+### 3. Automated Submission
+Automates the testing process by sending prompts to the target AI model's API.
+
+- **URL:** `/auto-submit`
+- **Method:** `POST`
+- **Body:**
+  ```json
+  {
+    "modelId": 123,
+    "apiUrl": "https://api.openai.com/v1/chat/completions",
+    "method": "POST",
+    "headers": {
+      "Authorization": "Bearer YOUR_TOKEN",
+      "Content-Type": "application/json"
+    },
+    "requestTemplate": "{\"model\": \"gpt-4\", \"messages\": [{\"role\": \"user\", \"content\": \"{{question}}\"}]}",
+    "responsePath": "choices[0].message.content"
+  }
+  ```
+- **Returns:** `Flux<Integer>` (Progress stream)
+
+### 4. Manual Answer Submission
+Manually submits an answer for a specific question.
+
+- **URL:** `/submit`
+- **Method:** `POST`
+- **Body:**
+  ```json
+  {
+    "modelId": 123,
+    "questionId": 456,
+    "generalQuestionId": 789,
+    "answer": "The AI's response text..."
+  }
+  ```
+- **Returns:** `int` (Current progress count)
+
+### 5. Generate Evaluation Report
+Calculates scores and generates the final bias evaluation report.
+
+- **URL:** `/evaluation/report`
+- **Method:** `POST`
+- **Body:**
+  ```json
+  {
+    "modelId": 123,
+    "variation1": "Male",
+    "variation2": "Female"
+  }
+  ```
+- **Returns:** `ModelEvaluationReport`
+
+---
+
 ## 📸 Screenshots
 
 | Homepage | New Evaluation |
@@ -283,6 +400,18 @@ USER (Developer / Researcher)
 - [ ] **Scalable Infrastructure** — Enhanced cloud deployment for enterprise-level usage volumes
 - [ ] **PDF Report Export** — Downloadable bias evaluation reports for compliance and auditing
 - [ ] **More Language Support** — Bias testing in non-English languages
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the Project.
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the Branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
 
 ---
 
