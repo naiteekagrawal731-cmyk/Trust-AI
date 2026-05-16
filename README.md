@@ -423,6 +423,9 @@ Contributions are welcome! Please follow these steps:
 | Name | Role |
 |---|---|
 | **Naiteek Agrawal** | Team Leader |
+| **Amit Dubey** | Developer |
+| **Kanha Soni** | Developer |
+| **Nitish Kumrawat** | Developer |
 
 ---
 
